@@ -1,0 +1,141 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    background-image: url("brain.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header span {
+    margin-right: auto;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+#sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: -250px;
+    transition: left 0.3s;
+    z-index: 2;
+}
+
+#sidebar h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+#sidebar a:hover {
+    text-decoration: underline;
+}
+
+#sidebar-toggle {
+    position: fixed;
+    top: 39.5px;
+    left: 0px;
+    z-index: 3;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: left 0.3s;
+}
+
+.sidebar-active #sidebar {
+    left: 0;
+}
+
+.sidebar-active #sidebar-toggle {
+    left: 250px;
+}
+
+.content {
+    margin-left: 20px;
+    margin-top: 80px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.section {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.highlights {
+    margin-bottom: 20px;
+}
+
+.highlights h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.highlights p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}

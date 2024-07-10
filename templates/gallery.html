@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/gallery.css" />
+    <title>Gallery - Brain Tumor Detection</title>
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <span>Brain Tumor</span>
+      </div>
+      <div>
+        <a href="/settings">Settings</a>
+        <a href="/login" id="authLink">Logout</a>
+      </div>
+    </header>
+
+    <button id="sidebar-toggle">☰</button>
+
+    <div id="sidebar">
+      <a href="/">Upload MRI Image</a>
+      <a href="/settings">Settings</a>
+      <a href="/contact">Contact Us</a>
+      <a href="/detection">How Detection Works</a>
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const authLink = document.getElementById("authLink");
+        const token = localStorage.getItem("TOKEN");
+
+        if (token) {
+          authLink.textContent = "Logout";
+          authLink.onclick = function () {
+            localStorage.removeItem("TOKEN");
+            window.location.href = "login.html";
+          };
+        } else {
+          authLink.textContent = "Logout";
+          authLink.onclick = function () {
+            window.location.href = "login.html";
+          };
+        }
+
+        const sidebarToggle = document.getElementById("sidebar-toggle");
+        const body = document.body;
+
+        sidebarToggle.addEventListener("click", function () {
+          body.classList.toggle("sidebar-active");
+        });
+
+        const galleryElement = document.getElementById("gallery");
+
+        // Array of direct Imgur URLs
+        const imgurUrls = [
+          "https://i.imgur.com/bk8uYPh.jpg",
+          "https://i.imgur.com/IeIC92j.jpg",
+          "https://i.imgur.com/FLd7ZIl.jpg",
+          "https://i.imgur.com/aFz2vmz.jpg",
+          "https://i.imgur.com/h9ncJBs.jpg",
+          "https://i.imgur.com/vn2Ylnf.jpg",
+          "https://i.imgur.com/g2Pal6I.jpg",
+          "https://i.imgur.com/bUlhcRW.jpg",
+          "https://i.imgur.com/ZlReoCB.jpg",
+          "https://i.imgur.com/RcJRgtn.jpg",
+          "https://i.imgur.com/u9pgQPI.jpg",
+          "https://i.imgur.com/n1KtwE0.jpg",
+          "https://i.imgur.com/BpW2CB7.jpg",
+          "https://i.imgur.com/q5Pmnkk.jpg",
+          "https://i.imgur.com/Tk3YSvF.jpg",
+          "https://i.imgur.com/K6ZpVJc.jpg",
+          "https://i.imgur.com/tkqd6Fv.jpg",
+          "https://i.imgur.com/9uLw1ju.jpg",
+          "https://i.imgur.com/W8Tsja4.jpg",
+          "https://i.imgur.com/89Yq5f6.jpg",
+          "https://i.imgur.com/HXX7OZx.jpg",
+          "https://i.imgur.com/Stl6Boy.jpg",
+          "https://i.imgur.com/0fsrUzr.jpg",
+          "https://i.imgur.com/8o5eX4l.jpg",
+          "https://i.imgur.com/KD1lFbR.jpg",
+          "https://i.imgur.com/rVrEk2p.jpg",
+          "https://i.imgur.com/Nwa4tJ4.jpg",
+          "https://i.imgur.com/8V3p3q8.jpg",
+          "https://i.imgur.com/l47MSjn.jpg",
+          "https://i.imgur.com/KIHlKLh.jpg",
+          "https://i.imgur.com/9L8BrSO.jpg",
+          "https://i.imgur.com/PX8Rauv.jpg",
+          "https://i.imgur.com/LZXPgTE.jpg",
+          "https://i.imgur.com/5A17Pdg.jpg",
+          "https://i.imgur.com/kyNSoIH.jpg",
+          "https://i.imgur.com/fsTNbAb.jpg",
+          "https://i.imgur.com/4MkPm7m.jpg",
+          "https://i.imgur.com/DqhIP9E.jpg",
+          "https://i.imgur.com/bTa5mWU.jpg",
+          "https://i.imgur.com/aAeWzej.jpg",
+          "https://i.imgur.com/wUj5CfT.jpg",
+          "https://i.imgur.com/YTxpYMe.jpg",
+          "https://i.imgur.com/9QR9W81.jpg",
+          "https://i.imgur.com/DzvhDsC.jpg",
+          "https://i.imgur.com/0qrMZLi.jpg",
+          "https://i.imgur.com/qnGzrCT.jpg",
+          "https://i.imgur.com/ZSpFzYM.jpg",
+          "https://i.imgur.com/bTa5mWU.jpg",
+        ];
+
+        imgurUrls.forEach((url) => {
+          const img = document.createElement("img");
+          img.src = url;
+          img.alt = "Gallery Image";
+          galleryElement.appendChild(img);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/detection.css" />
+    <title>Brain Tumor Detection</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <span>Brain Tumor</span>
+      </div>
+      <div>
+        <a href="/settings">Settings</a>
+        <a href="/login" id="authLink">Logout</a>
+      </div>
+    </header>
+
+    <button id="sidebar-toggle">☰</button>
+
+    <div id="sidebar">
+      <a href="/">Upload MRI Image</a>
+      <a href="/settings">Settings</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/contact">Contact Us</a>
+    </div>
+
+    <div class="content">
+      <div class="highlights">
+        <h2>Brain Tumor Detection: Understanding the Basics</h2>
+        <p>
+          Brain tumors, both malignant and benign, are abnormal growths of cells
+          within the brain or its surrounding tissues. They can lead to a wide
+          range of symptoms, including headaches, seizures, cognitive
+          impairment, and personality changes. The accurate detection of brain
+          tumors is crucial for effective treatment and improved patient
+          outcomes.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>The Significance of Early Detection</h2>
+        <p>
+          Early detection of brain tumors plays a pivotal role in determining
+          treatment options and patient prognosis. Timely diagnosis allows for
+          prompt medical intervention, potentially preventing further
+          complications and improving the chances of successful treatment
+          outcomes.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Advancements in Detection Technologies</h2>
+        <p>
+          Recent advancements in medical imaging technologies, such as MRI and
+          CT scans, have revolutionized the detection of brain tumors. These
+          imaging modalities provide detailed images of the brain, enabling
+          radiologists and clinicians to identify and evaluate suspicious
+          abnormalities with greater precision and accuracy.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>The Role of Machine Learning in Detection</h2>
+        <p>
+          Machine learning algorithms have emerged as powerful tools for
+          enhancing the detection of brain tumors. By analyzing vast datasets of
+          medical images, these algorithms can identify subtle patterns and
+          anomalies indicative of tumor presence. This enables healthcare
+          professionals to make more informed diagnostic decisions and
+          streamline the treatment process.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const authLink = document.getElementById("authLink");
+        const token = localStorage.getItem("TOKEN");
+
+        if (token) {
+          authLink.textContent = "Logout";
+          authLink.onclick = function () {
+            localStorage.removeItem("TOKEN");
+            window.location.href = "login.html";
+          };
+        } else {
+          authLink.textContent = "Logout";
+          authLink.onclick = function () {
+            window.location.href = "login.html";
+          };
+        }
+
+        const sidebarToggle = document.getElementById("sidebar-toggle");
+        const body = document.body;
+
+        sidebarToggle.addEventListener("click", function () {
+          body.classList.toggle("sidebar-active");
+        });
+      });
+    </script>
+  </body>
+</html>

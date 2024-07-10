@@ -1,0 +1,122 @@
+
+body {
+font-family: "Arial", sans-serif;
+margin: 0;
+padding: 0;
+background-color: #f5f5f5;
+background-image: url("brain.png");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+height: 100vh;
+overflow-x: hidden;
+}
+
+header {
+background-color: #333;
+color: #fff;
+padding: 10px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: fixed;
+width: 100%;
+top: 0;
+flex-wrap: wrap;
+box-sizing: border-box;
+z-index: 1;
+}
+
+header div {
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+}
+
+header span {
+margin-right: auto;
+}
+
+header a {
+color: #fff;
+text-decoration: none;
+margin-left: 10px;
+white-space: nowrap;
+}
+
+#sidebar {
+width: 250px;
+background-color: #333;
+color: #fff;
+padding: 20px;
+box-sizing: border-box;
+position: fixed;
+height: 100%;
+top: 0;
+left: -250px;
+transition: left 0.3s;
+z-index: 2;
+}
+
+#sidebar h2 {
+margin-top: 0;
+}
+
+#sidebar a {
+color: #fff;
+text-decoration: none;
+display: block;
+margin: 10px 0;
+}
+
+#sidebar a:hover {
+text-decoration: underline;
+}
+
+#sidebar-toggle {
+position: fixed;
+top: 39.5px;
+left: 0px;
+z-index: 3;
+cursor: pointer;
+background-color: #333;
+color: #fff;
+border: none;
+padding: 10px;
+border-radius: 5px;
+transition: left 0.3s;
+}
+
+.sidebar-active #sidebar {
+left: 0;
+}
+
+.sidebar-active #sidebar-toggle {
+left: 250px;
+}
+
+.gallery {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+padding: 100px 20px 20px 20px;
+box-sizing: border-box;
+margin: 0 auto;
+}
+
+.gallery img {
+width: 150px;
+height: 150px;
+object-fit: cover;
+border: 2px solid #fff;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin: 10px;
+cursor: pointer;
+transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery img:hover {
+transform: scale(1.05);
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}

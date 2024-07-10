@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/performance-analysis.css" />
+    <title>Performance Analysis - Brain Tumor Detection</title>
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <span>Brain Tumor</span>
+      </div>
+      <div>
+        <a href="/">Home</a>
+        <a href="#" onclick="logout()">Logout</a>
+      </div>
+    </header>
+
+    <section>
+      <h1>Performance Analysis</h1>
+      <p>
+        Here's the performance analysis of the Brain Tumor detection system.
+      </p>
+
+      <div class="result-container">
+        <!-- Placeholder content for performance metrics -->
+        <div class="modelName">
+          <h3>VGG-Model</h3>
+        </div>
+        <div class="modelData">
+          <p class="Accuracy">Accuracy: 85.82%</p>
+          <p class="Precision">Precision: 27%</p>
+          <p class="Recall">Recall: 27%</p>
+          <p class="F-Measure">F-Measure: 25%</p>
+        </div>
+      </div>
+
+      <div class="result-container">
+        <!-- Placeholder content for performance metrics -->
+        <div class="modelName">
+          <h3>InceptionV3</h3>
+        </div>
+        <div class="modelData">
+          <p class="Accuracy">Accuracy: 93.73%</p>
+          <p class="Precision">Precision: 74%</p>
+          <p class="Recall">Recall: 64%</p>
+          <p class="F-Measure">F-Measure: 62%</p>
+        </div>
+      </div>
+
+      <div class="result-container">
+        <!-- Placeholder content for performance metrics -->
+        <div class="modelName">
+          <h3>CNN-Model</h3>
+        </div>
+        <div class="modelData">
+          <p class="Accuracy">Accuracy: 93.05%</p>
+          <p class="Precision">Precision: 73%</p>
+          <p class="Recall">Recall: 70%</p>
+          <p class="F-Measure">F-Measure: 66%</p>
+        </div>
+      </div>
+
+      <div class="result-container">
+        <!-- Placeholder content for performance metrics -->
+        <div class="modelName">
+          <h3>ResNet-Model</h3>
+        </div>
+        <div class="modelData">
+          <p class="Accuracy">Accuracy: 88.05%</p>
+          <p class="Precision">Precision: 80%</p>
+          <p class="Recall">Recall: 81.25%</p>
+          <p class="F-Measure">F-Measure: 74.91%</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function logout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+
+        if (confirmLogout) {
+          // Redirect to the login page upon logout confirmation
+          window.location.href = "login.html";
+        } else {
+        }
+      }
+    </script>
+  </body>
+</html>

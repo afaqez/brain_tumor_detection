@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/result.css" />
+    <title>Result - Brain Tumor Detection</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <span>Brain Tumor</span>
+      </div>
+      <div>
+        <a href="/">Home</a>
+        <a href="/first" onclick="logout()">Logout</a>
+      </div>
+    </header>
+
+    <section>
+      <h1>Brain Tumor Detection</h1>
+      <h1>Result</h1>
+      <p>Here's the result of testing using Image Processing.</p>
+
+      <div class="result-container">
+        <div class="result-image">
+          <!-- Placeholder for the uploaded image -->
+          <img id="uploadedImage" src="" alt="Uploaded Image" />
+        </div>
+
+        <!-- Prediction result boxes -->
+        <div class="prediction-box" id="Prediction"></div>
+      </div>
+      <!-- Link to performance analysis -->
+      <h1
+        style="font-size: 24px; font-family: 'Times New Roman'; color: #e9700c"
+      >
+        <a href="/performance-analysis">Performance Analysis</a>
+      </h1>
+    </section>
+
+    <script>
+      function logout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+        if (confirmLogout) {
+          window.location.href = "first";
+        }
+      }
+
+      function checkResult() {
+        fetch("/get_result")
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data.predicted_class_vgg);
+            document.getElementById("uploadedImage").src = data.filename;
+
+            // For VGG Model
+            document.getElementById(
+              "Prediction"
+            ).textContent = `${data.selected_model.toUpperCase()} -> ${
+              data.predicted_class
+            }`;
+
+            // // For ResNet Model
+            // document.getElementById(
+            //   "resnetPrediction"
+            // ).textContent = `ResNet -> ${data.predicted_class_resnet}`;
+
+            // // For CNN Model
+            // document.getElementById(
+            //   "cnnPrediction"
+            // ).textContent = `CNN -> ${data.predicted_class_cnn}`;
+
+            // // For InceptionV3 Model
+            // document.getElementById(
+            //   "inceptionPrediction"
+            // ).textContent = `InceptionV3 -> ${data.predicted_class_inception_v3}`;
+          })
+          .catch((error) => {
+            console.error("Error fetching result:", error);
+          });
+      }
+
+      function getClassLabel(predictedClass) {
+        const labels = ["No Tumor", "Tumor"];
+        return labels[predictedClass] || "Unknown";
+      }
+
+      window.onload = checkResult;
+    </script>
+  </body>
+</html>

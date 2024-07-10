@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/settings.css" />
+    <title>Change Password - Brain Tumor Detection</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <span>Brain Tumor</span>
+      </div>
+      <div>
+        <a href="/">Home</a>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <a href="/">Upload MRI Image</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/contact">Contact Us</a>
+      <a href="/detection">How Detection Works</a>
+    </div>
+
+    <section>
+      <h1>Change Password</h1>
+
+      <form id="changePasswordForm" onsubmit="return validateForm()">
+        <label for="currentPassword">Current Password:</label>
+        <input
+          type="password"
+          id="currentPassword"
+          name="currentPassword"
+          required
+        />
+
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required />
+
+        <label for="confirmNewPassword">Confirm New Password:</label>
+        <input
+          type="password"
+          id="confirmNewPassword"
+          name="confirmNewPassword"
+          required
+        />
+
+        <input type="submit" value="Change Password" />
+      </form>
+
+      <script>
+        function validateForm() {
+          alert("Password changed successfully!");
+          return false;
+        }
+      </script>
+    </section>
+
+    <button id="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const sidebarToggle = document.getElementById("sidebar-toggle");
+        const body = document.body;
+        const isOpen = body.classList.contains("sidebar-active");
+
+        if (isOpen) {
+          sidebar.style.left = "-250px";
+          body.classList.remove("sidebar-active");
+        } else {
+          sidebar.style.left = "0";
+          body.classList.add("sidebar-active");
+        }
+      }
+    </script>
+  </body>
+</html>

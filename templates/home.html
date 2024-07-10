@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/home.css" />
+    <title>Upload MRI Image - Brain Tumor Detection</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <!-- Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyA3pTuRdQw0a0njBfg4IdvnTRkx0zyNWjY",
+        authDomain: "brain-tumour-detection-7255a.firebaseapp.com",
+        projectId: "brain-tumour-detection-7255a",
+        storageBucket: "brain-tumour-detection-7255a.appspot.com",
+        messagingSenderId: "877371096379",
+        appId: "1:877371096379:web:9cac7fa21cdb0405220b1e",
+        measurementId: "G-8DED7DDD1H",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            // User is signed in
+            document.getElementById("authLink").textContent = "Logout";
+            document
+              .getElementById("authLink")
+              .addEventListener("click", function (event) {
+                event.preventDefault();
+                firebase
+                  .auth()
+                  .signOut()
+                  .then(() => {
+                    window.location.href = "/login";
+                  });
+              });
+          } else {
+            // No user is signed in
+            window.location.href = "/login";
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <div>
+        <span>Brain Tumor</span>
+      </div>
+      <div>
+        <a href="/settings">Settings</a>
+        <a href="/first" id="authLink">Logout</a>
+      </div>
+    </header>
+
+    <button id="sidebar-toggle">☰</button>
+
+    <div id="sidebar">
+      <a href="/settings">Settings</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/contact">Contact Us</a>
+      <a href="/detection">How Detection Works</a>
+    </div>
+
+    <section>
+      <h1>Upload MRI Image</h1>
+      <form id="uploadForm" enctype="multipart/form-data">
+        <label for="mriImage">Choose MRI Image (JPEG only):</label>
+        <input
+          type="file"
+          id="mriImage"
+          name="mriImage"
+          accept=".jpeg, .jpg"
+          required
+        />
+
+        <label for="modelSelect">Choose Model:</label>
+        <select id="modelSelect" name="modelSelect" required>
+          <option value="vgg">VGG</option>
+          <option value="inception">InceptionV3</option>
+          <option value="cnn">CNN</option>
+          <option value="resnet">ResNet</option>
+        </select>
+
+        <input type="submit" value="Upload" onclick="uploadImage(event)" />
+      </form>
+    </section>
+
+    <script>
+      function uploadImage(event) {
+        event.preventDefault();
+        const form = document.getElementById("uploadForm");
+        const formData = new FormData(form);
+
+        firebase
+          .auth()
+          .currentUser.getIdToken(true)
+          .then((idToken) => {
+            axios
+              .post("/upload", formData, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                  Authorization: `Bearer ${idToken}`,
+                },
+              })
+              .then((response) => {
+                window.location.href = "result";
+              })
+              .catch((error) => {
+                console.error("Error uploading image:", error);
+              });
+          })
+          .catch((error) => {
+            console.error("Error getting ID token:", error);
+          });
+      }
+    </script>
+  </body>
+</html>

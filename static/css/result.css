@@ -1,0 +1,92 @@
+
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    background-image: url("brain.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+section {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    font-size: 36px;
+}
+
+p {
+    color: #555;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.result-container {
+    text-align: center;
+    background-color: rgb(232, 227, 227);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto 20px;
+}
+
+.result-image img {
+    width: 200px;
+    height: 200px;
+    background-color: #c2bdbd6b;
+    border-radius: 8px;
+    object-fit: fill;
+}
+
+/* Prediction result boxes */
+.prediction-box {
+    background-color: #ffffff;
+    border: 2px solid #333333;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+/* Specific styles for different models */
+.vgg {
+    border-color: #ff6b6b; 
+}
+
+.resnet {
+    border-color: #6bd4ff; 
+}
+
+.cnn {
+    border-color: #6bff8a; 
+}
+
+.inception {
+    border-color: #ffcd6b; 
+}
